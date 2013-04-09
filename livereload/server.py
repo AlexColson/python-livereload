@@ -131,7 +131,7 @@ class IndexHandler(RequestHandler):
 
     def read_path(self, abspath):
         filepath = abspath
-        if abspath.endswith('/'):
+        if os.path.isdir(filepath):
             filepath = os.path.join(abspath, 'index.html')
             if not os.path.exists(filepath):
                 self.create_index(abspath)
